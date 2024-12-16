@@ -2,13 +2,17 @@
 
 Demonstration of:
 
-* Loco high-level web framework
+* Loco web application framework
+
 * Axum modular web framework
+
 * Tokio asynchronous runtime
+
 * Rust programming language
 
 
 ## Create a new app
+
 
 ### Install prerequisites
 
@@ -19,9 +23,20 @@ $ cargo install loco
 $ cargo install sea-orm-cli
 ```
 
+
 ### Create a new app
 
-Create a new app via prompts:
+For this demo, we will create a new app with these settings:
+
+* Build a Software-as-a-Service (SaaS) app
+
+* Use server-side rendering. Other options include client-side rendering.
+
+* Database provider is PostgreSQL Other options include SQLite.
+
+* Background worker type is async i.e. in-process tokio async tasks. Other options include blocking.
+
+Create a new app via prompts;
 
 ```sh
 $ loco new
@@ -48,6 +63,7 @@ Build:
 $ cd demo
 $ cargo build
 ```
+
 
 ### Create a database
 
@@ -101,20 +117,20 @@ INFO app: loco_rs::controller::app_routes: +middleware name="fallback" environme
 INFO app: loco_rs::controller::app_routes: +middleware name="powered_by" environment=development
 INFO app: demo::initializers::view_engine: locales loaded environment=development
 
-                      ▄     ▀                     
-                                 ▀  ▄             
-                  ▄       ▀     ▄  ▄ ▄▀           
-                                    ▄ ▀▄▄         
-                        ▄     ▀    ▀  ▀▄▀█▄       
-                                          ▀█▄     
-▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄ ▀▀█    
- ██████  █████   ███ █████   ███ █████   ███ ▀█   
- ██████  █████   ███ █████   ▀▀▀ █████   ███ ▄█▄  
+                      ▄     ▀
+                                 ▀  ▄
+                  ▄       ▀     ▄  ▄ ▄▀
+                                    ▄ ▀▄▄
+                        ▄     ▀    ▀  ▀▄▀█▄
+                                          ▀█▄
+▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄ ▀▀█
+ ██████  █████   ███ █████   ███ █████   ███ ▀█
+ ██████  █████   ███ █████   ▀▀▀ █████   ███ ▄█▄
  ██████  █████   ███ █████       █████   ███ ████▄
  ██████  █████   ███ █████   ▄▄▄ █████   ███ █████
  ██████  █████   ███  ████   ███ █████   ███ ████▀
-   ▀▀▀██▄ ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀ ██▀  
-       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    
+   ▀▀▀██▄ ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀ ██▀
+       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
                 https://loco.rs
 
 environment: development
@@ -126,16 +142,16 @@ compilation: debug
 listening on http://localhost:5150
 ```
 
-### Fixes
+### Fix
 
-If you get this optimization message, then that's fine, and you can optimize it later:
+If you get this optimization message about "pretty backtraces", then that's fine, and you can optimize it later:
 
 ```txt
 INFO app: loco_rs::config: loading environment from selected_path="config/development.yaml" environment=development
 WARN app: loco_rs::boot: pretty backtraces are enabled (this is great for development but has a runtime cost for production. disable with `logger.pretty_backtrace` in your config yaml) environment=development
 ```
 
-If you get this error message, then it means that your environment variable DATABASE_URL is not set correctly, so you'll need to fix it:
+If you get this error message about "PgDatabaseError", then it means that your environment variable DATABASE_URL is not connecting to your database correctly, so you'll need to fix either the variable or the your database server or your database connection:
 
 ```txt
 Error: DB(Conn(SqlxError(Database(PgDatabaseError { severity: Fatal, code: "28000", message: "role \"loco\" does not exist", detail: None, hint: None, position: None, where: None, schema: None, table: None, column: None, data_type: None, constraint: None, file: Some("miscinit.c"), line: Some(752), routine: Some("InitializeSessionUserId") }))))
@@ -147,6 +163,7 @@ Error: DB(Conn(SqlxError(Database(PgDatabaseError { severity: Fatal, code: "2800
 [Loco](https://loco.rs) is a web and API framework running on Rust.
 
 This is the **SaaS starter** which includes a `User` model and authentication based on JWT.
+
 It also include configuration sections that help you pick either a frontend or a server-side template set up for your fullstack server.
 
 
