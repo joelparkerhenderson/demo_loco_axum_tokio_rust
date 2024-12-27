@@ -72,15 +72,15 @@ We use PostgreSQL to create a database, create a database administor role, and g
 SQL:
 
 ```sql
-CREATE DATABASE demo_development;
-CREATE ROLE demo_administrator WITH LOGIN ENCRYPTED PASSWORD 'secret';
-GRANT ALL PRIVILEGES ON DATABASE demo_development TO demo_administrator;
+CREATE ROLE demo_owner WITH LOGIN ENCRYPTED PASSWORD 'secret';
+CREATE DATABASE demo_development OWNER demo_owner;
+GRANT ALL PRIVILEGES ON DATABASE demo_development TO demo_owner;
 ```
 
 Set an environment variable DATABASE_URL with the database connection URL:
 
 ```sh
-$ export DATABASE_URL="postgres://demo_administrator:secret@localhost:5432/demo_development"
+$ export DATABASE_URL="postgres://demo_owner:secret@localhost:5432/demo_development"
 ```
 
 
